@@ -1,8 +1,8 @@
 import '@/styles/globals.css'
 
 export const metadata = {
-  title: 'Breadit',
-  description: 'A Reddit clone built with Next.js and TypeScript.',
+  title: 'Connectit',
+  description: 'Unleash the Power of Online Community. Connecting people through vibrant discussions, diverse perspectives, and endless possibilities. Join the conversation and experience a digital community like no other.',
 }
 
 export default function RootLayout({
