@@ -3,6 +3,7 @@ import { Icons } from './Icons';
 import { buttonVariants } from './ui/Button';
 import { getAuthSession } from '@/lib/auth';
 import UserAccountNav from './UserAccountNav';
+import { ThemeToggle } from './ThemeToggle';
 
 const Navbar = async () => {
   const session = await getAuthSession();
@@ -18,15 +19,18 @@ const Navbar = async () => {
             Connectit
           </h3>
         </Link>
-        {session?.user ? (
-          <UserAccountNav user={session.user} />
-        ) : (
-          <Link
-            href='sign-in'
-            className={buttonVariants()}>
-            Sign In
-          </Link>
-        )}
+      <div className='flex items-center gap-3'>
+          <ThemeToggle />
+          {session?.user ? (
+            <UserAccountNav user={session.user} />
+          ) : (
+            <Link
+              href='sign-in'
+              className={buttonVariants()}>
+              Sign In
+            </Link>
+          )}
+      </div>
       </nav>
     </header>
   );

@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import '@/styles/globals.css';
 import { Inter } from 'next/font/google';
 import AuthProvider from './providers/AuthProvider';
+import { ThemeProvider } from './providers/ThemeProvider';
 
 export const metadata = {
   title: 'Connectit',
@@ -22,9 +23,14 @@ export default function RootLayout({
 }) {
   return (
     <html
+      suppressHydrationWarning
       lang='en'
       className={cn('bg-white text-slate-900 antialiased light', inter.className)}>
-      <AuthProvider>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+      >
+        <AuthProvider>
         <body className='min-h-screen pt-12 bg-slate-50 antialiased'>
           {/* @ts-expect-error-server component */}
           <Navbar />
@@ -34,7 +40,8 @@ export default function RootLayout({
           </div>
           <Toaster />
         </body>
-      </AuthProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </html>
   );
 }
